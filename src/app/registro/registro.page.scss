@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+
+.ini{
+    text-align: initial;
+    font-family: "Lexend Deca", sans-serif;
+    font-size: medium;
+    margin-left: 10px;
+    
+}
+
+.inii{
+    text-align: center;
+    border: 0.5px;
+    border-style:groove;
+    border-radius: 10px;
+    margin: 15px;
+    border-color: #5F4B66;
+}
+
+
+.login{
+    margin-top: 130px;
+    border-width: 1.2px;
+    border-style: groove;
+    border-color: #5F4B66;;
+    --background: #A7ADC6;
+}
+
+ion-button{
+    display: flex;
+    justify-content: center;
+    padding-inline-start: 30px;
+    padding-inline-end: 30px;
+    margin: 10px;
+    
+}
+
+ion-item{
+    --background: #A7ADC6;
+}

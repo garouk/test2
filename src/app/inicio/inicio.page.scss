@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+
+ion-item{
+    --background: #A7ADC6;
+}
+
+.head {
+    text-align: center;
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #A7ADC6;
+    font-size: xx-large;
+
+}
+
+ion-toolbar {
+    --background: #5F4B66;
+}
+
+
+
+ion-content{
+    --background: #A7ADC6
+}
+
+.back{
+    font-size: x-large;
+    margin-top: 5px;
+}

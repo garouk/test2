@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="head">
+      Vivo Duoc
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-card class="login">
+
+    <ion-card-header>
+      <ion-card-title class="ini">Registro cuenta</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+     
+      <ion-item>
+        <ion-icon name="person"></ion-icon>
+        <ion-input class="inii" placeholder="lol" [(ngModel)]="user"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="mail"></ion-icon>
+        <ion-input class="inii" placeholder="Email" [(ngModel)]="email"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="key"></ion-icon>
+        <ion-input class="inii" placeholder="Contraseña" type="password" [(ngModel)]="password"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="key"></ion-icon>
+        <ion-input class="inii" placeholder="Repite Contraseña" type="password" [(ngModel)]="repassword"> </ion-input>
+      </ion-item>
+
+    </ion-card-content>
+
+
+     <ion-button (click)="register()">Crear Cuenta</ion-button>
+     <ion-button (click)="clearLocalStorage()">Borrar localStorage</ion-button>
+  </ion-card>
+</ion-content>
