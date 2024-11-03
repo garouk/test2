@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+
+.ini{
+    text-align: initial;
+    font-family: "Lexend Deca", sans-serif;
+    font-size: medium;
+    margin-left: 10px;
+    
+}
+
+.inii{
+    text-align: center;
+    border: 0.5px;
+    border-style:groove;
+    border-radius: 10px;
+    margin: 15px;
+    border-color: #5F4B66;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+.login{
+    margin-top: 130px;
+    border-width: 1.2px;
+    border-style: groove;
+    border-color: #5F4B66;;
+    --background: #A7ADC6;
+}
+
+ion-button{
+    --background: #533D55;
+    --background-activated: rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+ion-item{
+    --background: #A7ADC6;
+}
+
+.head {
+    text-align: center;
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #A7ADC6;
+    font-size: xx-large;
+
+}
+
+ion-toolbar {
+    --background: #5F4B66;
+}
+
+
+
+ion-content{
+    --background: #A7ADC6
+}
+
+.back{
+    font-size: x-large;
+    margin-top: 5px;
+    color: #2C1320;
+}
+
+.buttonss {
+    display: flex;             
+    align-items: center;        
+    justify-content: center;  
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.iconos {
+    margin: 0px;           
+    font-size: 20px;  
+    display: flex;
+    float: inline-end;        
+}
+
+.carta{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #392132;
+    text-align: center;
+}
+
+
+.text {
+    margin-bottom: 10px;      
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    color: white;
+}
+
+.carta2{
+    padding: 20px;
+    background-color: #71647E;
+    color: white;
+}
+
+.asignatura{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-size:large;
+}

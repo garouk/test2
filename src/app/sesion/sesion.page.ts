@@ -39,7 +39,7 @@ async login() {
     if (user && user.user === f.user && user.password === f.password) {
       const alert = await this.alertController.create({
         header: 'Inicio exitoso',
-        message: `Ha iniciado sesion correctamente.\nBienvenido, ${user.user}.`,
+        message: `Ha iniciado sesion correctamente.\n\nBienvenido, ${user.user}.`,
         buttons: ['Aceptar']
       });
       console.log('Ingresado');

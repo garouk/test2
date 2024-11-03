@@ -7,30 +7,57 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
+  <br>
+  <ion-card>
+      <ion-item>
+          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-card-content class="tcard">Horario</ion-card-content>
+           <ion-button [routerLink]="['/horario']" slot="end">
+            <ion-icon name="eye-outline"></ion-icon>
+           </ion-button>
+      </ion-item>
+      
+  </ion-card>
 
-        <ion-tab-button tab="asistencia">
-          <ion-icon name="play-circle"></ion-icon>
-          Listen Now
-        </ion-tab-button>
-        <ion-tab-button tab="asignatura">
-          <ion-icon name="radio"></ion-icon>
-          Radio
-        </ion-tab-button>
-        <ion-tab-button tab="qr">
-          <ion-icon name="library"></ion-icon>
-          Library
-        </ion-tab-button>
-        <ion-tab-button tab="search">
-          <ion-icon name="search"></ion-icon>
-          Search
-        </ion-tab-button>
+  <br>
+  <ion-card>
+      <ion-item>
+          <ion-icon name="school-outline"></ion-icon>
+          <ion-card-content class="tcard">Asignaturas</ion-card-content>
+           <ion-button [routerLink]="['/asignatura']" slot="end">
+            <ion-icon name="eye-outline"></ion-icon>
+           </ion-button>
+      </ion-item>
+  </ion-card>
 
-      </ion-tab-bar>
-    </ion-tabs>
+  <br>
+  <ion-card>
+      <ion-item>
+          <ion-icon name="clipboard-outline"></ion-icon>
+          <ion-card-content class="tcard">Asistencia</ion-card-content>
+           <ion-button slot="end">
+            <ion-icon name="eye-outline"></ion-icon>
+           </ion-button>          
+      </ion-item>
+  </ion-card>
 
- </ion-content>
+  <br>
+  <ion-card>
+      <ion-item>
+          <ion-icon name="qr-code-outline"></ion-icon>
+          <ion-card-content class="tcard">Scanner QR</ion-card-content>
+           <ion-button slot="end">
+            <ion-icon name="eye-outline"></ion-icon>
+           </ion-button>
+      </ion-item>
+  </ion-card>
 
+  <br>
+  <br>
+  <div class="bottons">
+      <ion-button expand="block">Restablecer Contraseña</ion-button>
+      <ion-button expand="block">Cerrar Sesión</ion-button>
+  </div>
+
+</ion-content>

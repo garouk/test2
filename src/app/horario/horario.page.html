@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="head">
+      Vivo Duoc
+    </ion-title>
+    <ion-icon name="arrow-back" class="back"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="carta">
+    <div class="text"><br>
+      Cada boton representa un dia de la semana empezando de Lunes y terminando en Viernes. <br><br><br>
+      Selecciona uno para ver horario especifico.
+    <div class="buttonss">
+      <ion-button id="open-modal">L</ion-button>
+      <ion-modal
+         trigger="open-modal"
+         [initialBreakpoint]="0.25"
+         [breakpoints]="[0, 0.25, 0.5, 0.75]"
+         handleBehavior="cycle">
+         <ng-template>
+           <ion-content class="ion-padding">
+             <div class="ion-margin-top">
+               <ion-card class="carta2">
+                <p class="asignatura">Proceso de Portafolio 4</p>
+                <br>
+                <ion-icon name="time">10</ion-icon>
+                10:00-11:20 hrs.   
+                <br>
+                <ion-icon name="compass"></ion-icon> 
+                208-PO.
+              </ion-card>
+             </div>
+             <div class="ion-margin-top">
+              <ion-card class="carta2">
+                <p class="asignatura">Arquitectura</p>
+                <br>
+                <ion-icon name="time">10</ion-icon>
+                11:30-13:40hrs.  
+                <br>
+                <ion-icon name="compass"></ion-icon> 
+                203-PO.
+              </ion-card>
+            </div>
+           </ion-content>
+         </ng-template>
+       </ion-modal>
+      <ion-icon class="iconos" name="remove"></ion-icon>
+      <ion-button>M</ion-button>
+      <ion-icon class="iconos" name="remove"></ion-icon>
+      <ion-button>M</ion-button>
+      <ion-icon class="iconos" name="remove"></ion-icon>
+      <ion-button>J</ion-button>
+      <ion-icon class="iconos" name="remove"></ion-icon>
+      <ion-button>V</ion-button>
+    </div>
+    </div>
+  </ion-card>  
+</ion-content>

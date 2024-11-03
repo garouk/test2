@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Lexend+Deca:wght@100..900&display=swap');
 
 ion-item{
-    --background: #A7ADC6;
+    --background: #56667A;
+    color: white;
+    
 }
 
 .head {
@@ -28,4 +30,26 @@ ion-content{
 .back{
     font-size: x-large;
     margin-top: 5px;
+}
+
+.tcard{
+ font-family: "Lexend Deca", serif;
+ font-optical-sizing: auto;
+ color: white;
+}
+
+ion-button{
+    --background: #533D55;
+    --background-activated: rgba(0, 0, 0, 0.1);
+    font-family: "Lexend Deca", serif;
+    font-optical-sizing: auto;
+    
+}
+
+.bottons{
+   display: flex;
+   flex-direction: column;
+   gap: 50px;
+   margin-left: 60px ;
+   width: 260px;
 }
