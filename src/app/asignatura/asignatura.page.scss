@@ -66,48 +66,21 @@ ion-content{
     display: flex;
 }
 
-.buttonss {
-    display: flex;             
-    align-items: center;        
-    justify-content: center;  
-    margin-top: 60px;
-    margin-bottom: 10px;
-}
-
-.iconos {
-    margin: 0px;           
-    font-size: 20px;  
-    display: flex;
-    float: inline-end;        
-}
-
 .carta{
     padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:start;
     background-color: #392132;
-    text-align: center;
 }
-
 
 .text {
     margin-bottom: 10px;      
     font-family: "Lexend Deca", sans-serif;
     font-optical-sizing: auto;
     color: white;
-}
-
-.carta2{
-    padding: 20px;
-    background-color: #71647E;
-    color: white;
-}
-
-.asignatura{
-    font-family: "Lexend Deca", sans-serif;
-    font-optical-sizing: auto;
-    font-size:large;
+    font-size: medium;
+    
 }
 
 .bottom {
@@ -120,3 +93,21 @@ ion-content{
 
 }
 
+
+.sub{ 
+    margin-bottom: 7px;  
+    font-family: "Lexend Deca", sans-serif;
+    color: white;
+    font-size: small;
+    margin-left: auto;
+    
+}
+
+.info{
+    margin-bottom: 7px;  
+    font-family: "Lexend Deca", sans-serif;
+    color: white;
+    font-size: small;
+    margin-left: auto;
+    
+}

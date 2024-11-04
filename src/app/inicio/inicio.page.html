@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-title class="head">
@@ -8,6 +7,8 @@
 </ion-header>
 
 <ion-content>
+  <ion-card-content><ion-card-subtitle class="sub" >Bienvenido, {{nameUser}} </ion-card-subtitle> 
+  </ion-card-content>
   <br>
   <ion-card>
       <ion-item>
@@ -36,7 +37,7 @@
       <ion-item>
           <ion-icon name="clipboard-outline"></ion-icon>
           <ion-card-content class="tcard">Asistencia</ion-card-content>
-           <ion-button slot="end">
+           <ion-button [routerLink]="['/asistencia']" slot="end">
             <ion-icon name="eye-outline"></ion-icon>
            </ion-button>          
       </ion-item>
