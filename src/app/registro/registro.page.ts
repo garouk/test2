@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-user: string='';
+name: string='';
 email: string='';
 password: string='';
 repassword: string= this.password;
@@ -18,7 +18,7 @@ repassword: string= this.password;
   }
   register() {
     const user = {
-      user: this.user,
+      name: this.name,
       password: this.password,
     };
     localStorage.setItem('user', JSON.stringify(user))

@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "frankito",
+      "password": "Colocolo12",
+      "tipo": "estudiante"
+    },
+    {
+      "id": "2",
+      "name": "jorge",
+      "password": "Colocolo10",
+      "tipo": "profesor"
+    }
+  ]
+}

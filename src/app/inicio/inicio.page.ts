@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../auth.service'; 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
    
-  nameUser: string='';
+  userName: string='';
 
-  constructor() { }
+  constructor(private  authService: AuthService) { }
 
   ngOnInit() {
-  this.nameUser = localStorage.getItem('user')||'usuario desconocido';
+     this.userName = this.authService.getUserName()
+    }
+    
+  
+    
   }
   
-}

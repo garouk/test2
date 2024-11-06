@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="head">
+      Vivo Duoc
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content><ion-card-subtitle class="sub" >Bienvenido, {{userName}} </ion-card-subtitle> 
+  </ion-card-content>
+  <br>
+  <ion-card>
+      <ion-item>
+          <ion-icon name="qr-code-outline"></ion-icon>
+          <ion-card-content class="tcard">QR Asistencia</ion-card-content>
+           <ion-button [routerLink]="['/asistenciatwo']" slot="end">
+            <ion-icon name="eye-outline"></ion-icon>
+           </ion-button>
+      </ion-item>
+  </ion-card>
+
+  <br>
+  <ion-card>
+    <ion-item>
+        <ion-icon name="school-outline"></ion-icon>
+        <ion-card-content class="tcard">Asignaturas</ion-card-content>
+         <ion-button [routerLink]="['/horario']" slot="end">
+          <ion-icon name="eye-outline"></ion-icon>
+         </ion-button>
+    </ion-item>
+    
+</ion-card>
+  <div class="bottons">
+      <ion-button expand="block">Restablecer Contraseña</ion-button>
+      <ion-button expand="block">Cerrar Sesión</ion-button>
+  </div>
+
+</ion-content>
