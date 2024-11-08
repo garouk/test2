@@ -4,7 +4,44 @@
       "id": "1",
       "name": "frankito",
       "password": "Colocolo12",
-      "tipo": "estudiante"
+      "tipo": "estudiante",
+      "asignatura": [
+        {
+          "asigId": "005",
+          "asigName": "Arquitectura",
+          "assists": []
+        },
+        {
+          "asigId": "004",
+          "asigName": "CalidadSof",
+          "assists": []
+        },
+        {
+          "asigId": "003",
+          "asigName": "Estadistica",
+          "assists": []
+        },
+        {
+          "asigId": "006",
+          "asigName": "Etica",
+          "assists": []
+        },
+        {
+          "asigId": "008",
+          "asigName": "Ingles",
+          "assists": []
+        },
+        {
+          "asigId": "009",
+          "asigName": "Programacion",
+          "assists": []
+        },
+        {
+          "asigId": "010",
+          "asigName": "Portafolio",
+          "assists": []
+        }
+      ]
     },
     {
       "id": "2",

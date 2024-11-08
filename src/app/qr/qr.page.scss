@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Lexend+Deca:wght@100..900&display=swap');
+
+ion-item{
+    --background: #56667A;
+    color: white;
+    
+}
+
+.head {
+    text-align: center;
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #A7ADC6;
+    font-size: xx-large;
+
+}
+
+ion-toolbar {
+    --background: #5F4B66;
+}
+
+
+
+ion-content{
+    --background: #A7ADC6
+}
+
+.back{
+    font-size: x-large;
+    margin-top: 5px;
+}
+
+.tcard{
+ font-family: "Lexend Deca", serif;
+ font-optical-sizing: auto;
+ color: white;
+}
+
+ion-button{
+    --background: #533D55;
+    --background-activated: rgba(0, 0, 0, 0.1);
+    font-family: "Lexend Deca", serif;
+    font-optical-sizing: auto;
+    
+}
+
+.bottons{
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+   margin-left: 60px ;
+   width: 260px;
+}
+
+ 
+#qrImage{
+    padding: 20px 0;
+  }
+  
+  .qr-wrapper{
+    width: 230px; 
+    min-height: 230px;
+    background: var(--ion-color-tertiary); 
+    border-radius: 20px;
+  }
+  
+  .qr-placeholder{
+    width: 60px; 
+  }
+  
+  .d-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  

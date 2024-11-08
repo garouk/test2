@@ -32,19 +32,16 @@ const routes: Routes = [
     loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },
   {
-    path: 'profesor-dashboard',
-    loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
-  },
-  {
-    path: 'alumno-dashboard',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
-  },  {
     path: 'iniciotwo',
     loadChildren: () => import('./iniciotwo/iniciotwo.module').then( m => m.IniciotwoPageModule)
   },
   {
-    path: 'asistenciatwo',
-    loadChildren: () => import('./asistenciatwo/asistenciatwo.module').then( m => m.AsistenciatwoPageModule)
+    path: 'restablecer',
+    loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule)
+  },
+  {
+    path: 'qr',
+    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
   },
 
 

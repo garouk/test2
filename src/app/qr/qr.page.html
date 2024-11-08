@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="head">
+      Vivo Duoc
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+   <ion-segment [(ngModel)]="segment">
+
+    <ion-segment-button value="qr">
+      <ion-label>Scan QR</ion-label>
+    </ion-segment-button>
+   </ion-segment>
+   <br>
+   <div class="segment" *ngIf="segment === 'qr'">
+    <div class="segment-content">
+
+      <div id="qrImagen">
+        <div class="d-flex-center">
+          <div class="d-flex-center qr-wrapper">
+            <qr-code [value]="qrText" 
+            size="190" 
+            errorCorrectionLevel="M" />
+          </div>
+        </div>
+      <div class="ion-padding-top">{{qrText}}</div>
+      </div>
+    </div>
+   </div>
+</ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="bottom">
+      Horario
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

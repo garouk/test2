@@ -13,7 +13,7 @@ export class HorarioPage implements OnInit {
 
   ngOnInit() {
   }
-
+  
   volver(){
     this.modalController.dismiss();
     this.router.navigate(['/inicio']);

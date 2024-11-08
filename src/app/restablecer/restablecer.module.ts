@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AsistenciatwoPageRoutingModule } from './asistenciatwo-routing.module';
+import { RestablecerPageRoutingModule } from './restablecer-routing.module';
 
-import { AsistenciatwoPage } from './asistenciatwo.page';
+import { RestablecerPage } from './restablecer.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AsistenciatwoPageRoutingModule
+    RestablecerPageRoutingModule
   ],
-  declarations: [AsistenciatwoPage]
+  declarations: [RestablecerPage]
 })
-export class AsistenciatwoPageModule {}
+export class RestablecerPageModule {}

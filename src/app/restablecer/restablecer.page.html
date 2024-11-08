@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon (click)="volver()" name="arrow-back" class="back"></ion-icon>
+    <ion-title class="head">
+      Vivo Duoc
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-card class="login">
+    <ion-card-header>
+      <ion-card-title class="ini">Cambio de Contraseña</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+     <form (ngSubmit)="onSubmit()">
+       <ion-item>
+         <ion-icon name="key"></ion-icon>
+         <ion-input class="inii" placeholder="Contraseña actual" name="oldPassword" [(ngModel)]="oldPassword"> </ion-input>
+       </ion-item>
+ 
+       <ion-item>
+         <ion-icon name="key"></ion-icon>
+         <ion-input class="inii" placeholder="Contraseña Nueva" type="password" name="newPassword" [(ngModel)]="newPassword" ></ion-input>
+       </ion-item>
+ 
+       <ion-item>
+         <ion-icon name="key"></ion-icon>
+         <ion-input class="inii" placeholder="Nueva Repite Contraseña" type="password" name="confirmPassword" [(ngModel)]="confirmPassword"></ion-input>
+       </ion-item>
+
+      <ion-button type="submit">Cambiar Contraseña</ion-button>
+      </form>
+     </ion-card-content>
+  </ion-card>
+</ion-content>
