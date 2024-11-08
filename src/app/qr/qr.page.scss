@@ -77,4 +77,10 @@ ion-button{
   }
   
   
+  ion-textarea{
+    --highlight-color-valid: var(--ion-color-tertiary);
+    text-align: start;
+    
+  }
+
   

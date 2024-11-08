@@ -27,8 +27,11 @@
     "@capacitor/keyboard": "6.0.2",
     "@capacitor/status-bar": "6.0.1",
     "@ionic/angular": "^8.0.0",
+    "html5-qrcode": "^2.3.8",
     "ionicons": "^7.0.0",
     "ng-qrcode": "^18.0.0",
+    "ngx-qrcode": "^0.1.0-rc.1",
+    "qrcode": "^1.5.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
