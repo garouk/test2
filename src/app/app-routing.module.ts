@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'sesion',
+    redirectTo: 'qrgen',
     pathMatch: 'full'
   },
   {
@@ -43,6 +43,12 @@ const routes: Routes = [
     path: 'qr',
     loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
   },
+  {
+    path: 'qrgen',
+    loadChildren: () => import('./qrgen/qrgen.module').then( m => m.QrgenPageModule)
+  },
+
+
 
 
 ];

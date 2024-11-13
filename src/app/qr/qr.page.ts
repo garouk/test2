@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 
@@ -14,14 +15,16 @@ export class QrPage implements OnInit {
   usuario: any = {}; // Información del usuario desde localStorage
   asignaturas: any[] = []; // Array de asignaturas
   scannedCode: string | null = null; // Para guardar el código QR escaneado
+  asistenciaRegistrada: boolean = false; // Agregar esta propiedad
+  modalController: any;
 
-  constructor(private platform: Platform) { }
+  constructor(private platform: Platform, private router: Router) {}
 
   ngOnInit() {
     this.platform.ready().then(() => {
       this.usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
-      if (this.usuario && this.usuario.asignatura) {
-        this.asignaturas = this.usuario.asignatura; // Cargar las asignaturas del usuario
+      if (this.usuario && this.usuario.asignaturas) {
+        this.asignaturas = this.usuario.asignaturas; // Cargar las asignaturas del usuario
       }
       this.startScan(); // Iniciar escaneo al cargar la página
     });
@@ -34,23 +37,28 @@ export class QrPage implements OnInit {
 
   // Función para iniciar el escaneo de QR
   startScan() {
-    // Aquí debes pasar 'verbose: true' o 'verbose: false' en la configuración.
     const scanner = new Html5QrcodeScanner("qrScanner", {
       fps: 10,
       qrbox: 250
     }, false);
 
-    // Llamada a render con los dos argumentos: onScanSuccess y onScanError
     scanner.render(
       (decodedText) => {
         this.scannedCode = decodedText;
         console.log("Código QR escaneado: ", decodedText); // Aquí se puede manejar el texto del QR
         scanner.clear(); // Limpiar el escáner, ya que el escaneo se ha completado
+
+        // Aquí puedes actualizar la variable `asistenciaRegistrada` cuando se haya escaneado un QR válido
+        this.registrarAsistencia(decodedText);
       },
       (errorMessage) => {
         console.log("Error al escanear: ", errorMessage); // Manejamos errores de escaneo
       }
     );
+  }
+
+  volver() {
+    this.router.navigate(['/inicio']);
   }
 
   // Registrar la asistencia en la asignatura seleccionada
@@ -68,6 +76,7 @@ export class QrPage implements OnInit {
         localStorage.setItem('usuario', JSON.stringify(this.usuario));
 
         alert(`Asistencia registrada para la asignatura: ${asignatura.asigName}`);
+        this.asistenciaRegistrada = true;
       } else {
         alert('No se encontró la asignatura correspondiente al QR.');
       }

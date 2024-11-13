@@ -14,7 +14,7 @@
       <ion-item>
           <ion-icon name="qr-code-outline"></ion-icon>
           <ion-card-content class="tcard">QR Asistencia</ion-card-content>
-           <ion-button [routerLink]="['/lol']" slot="end">
+           <ion-button [routerLink]="['/qrgen']" slot="end">
             <ion-icon name="eye-outline"></ion-icon>
            </ion-button>
       </ion-item>
@@ -25,15 +25,15 @@
     <ion-item>
         <ion-icon name="school-outline"></ion-icon>
         <ion-card-content class="tcard">Asignaturas</ion-card-content>
-         <ion-button [routerLink]="['/horario']" slot="end">
+         <ion-button [routerLink]="['/lol']" slot="end">
           <ion-icon name="eye-outline"></ion-icon>
          </ion-button>
     </ion-item>
     
-</ion-card>
+ </ion-card>
   <div class="bottons">
       <ion-button expand="block">Restablecer Contraseña</ion-button>
-      <ion-button expand="block">Cerrar Sesión</ion-button>
+      <ion-button expand="block" (click)="logout()">Cerrar Sesión</ion-button>
   </div>
 
 </ion-content>

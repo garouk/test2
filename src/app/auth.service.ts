@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 
 @Injectable({
@@ -88,5 +88,23 @@ export class AuthService {
       });
       await alert.present();
     }
+    
   }
+  registrarAsistencia(userId: string, asigId: string, asistencia: any): Observable<any> {
+    // Primero obtenemos el usuario
+    return this.http.get<any>(`${this.apiUrl}/${userId}`).pipe(
+      switchMap((user) => {
+        // Encontramos la asignatura correspondiente
+        const asignatura = user.asignatura.find((asig: { asigId: string; }) => asig.asigId === asigId);
+        
+        // Agregamos la nueva asistencia al array 'assists' de esa asignatura
+        if (asignatura) {
+          asignatura.assists.push(asistencia);
+        }
+
+        // Actualizamos el usuario con la nueva lista de asignaturas
+        return this.http.put<any>(`${this.apiUrl}/${userId}`, user);
+      })
+    );
+}
 }

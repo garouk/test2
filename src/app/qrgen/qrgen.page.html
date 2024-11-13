@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon (click)="volver()" name="arrow-back" class="back"></ion-icon>
+    <ion-title class="head">
+      Generar Código QR
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Selecciona asignatura</ion-label>
+        <ion-select [(ngModel)]="asignaturaSeleccionada" interface="action-sheet">
+          <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura.asigId">
+            {{ asignatura.asigName }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="block" (click)="generarCodigoQr()" [disabled]="!asignaturaSeleccionada">
+        Generar Código QR
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="codigoQR">
+    <ion-card-content>
+      <qrcode [qrdata]="codigoQR"></qrcode>
+      <p class="codigo-texto">Código: {{ codigoQR }}</p>
+
+      <ion-button expand="block" (click)="registrarAsistencia()">
+        Registrar Asistencia
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="bottom">
+      QR Generator
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
