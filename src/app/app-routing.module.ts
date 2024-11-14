@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'qrgen',
+    redirectTo: 'sesion',
     pathMatch: 'full'
   },
   {
@@ -47,6 +47,11 @@ const routes: Routes = [
     path: 'qrgen',
     loadChildren: () => import('./qrgen/qrgen.module').then( m => m.QrgenPageModule)
   },
+  {
+    path: 'modal-content',
+    loadChildren: () => import('./modal-content/modal-content.module').then( m => m.ModalContentPageModule)
+  },
+
 
 
 

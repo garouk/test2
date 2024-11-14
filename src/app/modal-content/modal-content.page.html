@@ -1,0 +1,28 @@
+<!-- modal-content.page.html (Modal) -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ Asignatura?.asigName }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="Asignatura?.assists?.length > 0; else noAsistencias">
+    <ion-card *ngFor="let asistencia of Asignatura.assists">
+      <ion-card-header>
+        <ion-card-title>{{ asistencia.fecha }}</ion-card-title>
+        <ion-card-subtitle>{{ asistencia.estado }}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <ng-template #noAsistencias>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>No hay asistencias registradas</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ng-template>
+</ion-content>

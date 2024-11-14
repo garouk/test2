@@ -7,69 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  <!-- Botones de asignaturas que abren el modal -->
+  <!-- Lista de botones para las asignaturas -->
   <div class="buttonss">
     <ion-button *ngFor="let asignatura of asignaturas" (click)="abrirModal(asignatura)">
       {{ asignatura.asigName }}
     </ion-button>
   </div>
 </ion-content>
-
-<!-- Modal para mostrar los detalles de la asignatura -->
-<ion-content>
-  <!-- Mostrar mensaje si no hay asignaturas -->
-  <div *ngIf="asignaturas.length === 0">
-    <p>No tienes asignaturas disponibles.</p>
-  </div>
-
-  <!-- Botones de asignaturas que abren el modal -->
-  <div class="buttonss" *ngIf="asignaturas.length > 0">
-    <ion-button *ngFor="let asignatura of asignaturas" (click)="abrirModal(asignatura)">
-      {{ asignatura.asigName }}
-    </ion-button>
-  </div>
-</ion-content>
-
-<!-- Modal para mostrar los detalles de la asignatura -->
-<ion-modal
-  *ngIf="modalAsignatura"
-  [initialBreakpoint]="0.25"
-  [breakpoints]="[0, 0.25, 0.5, 0.75]"
-  handleBehavior="cycle"
-  (didDismiss)="cerrarModal()">
-  
-  <ng-template>
-    <ion-content class="ion-padding">
-      <div class="ion-margin-top">
-        <ion-card class="carta2">
-          <p class="asignatura">{{ modalAsignatura?.asigName }}</p>
-          <br>
-          <ion-button (click)="registrarAsistencia(modalAsignatura)">Registrar Asistencia</ion-button>
-        </ion-card>
-      </div>
-
-      <div class="ion-margin-top">
-        <ion-card class="carta2">
-          <p class="asignatura">Asistencia Registrada</p>
-          <div *ngIf="modalAsignatura?.assists && modalAsignatura.assists.length > 0">
-            <ul>
-              <li *ngFor="let asistencia of modalAsignatura.assists">
-                <ion-icon name="person"></ion-icon> 
-                {{ asistencia.fecha }} - {{ asistencia.hora }} - {{ asistencia.estado }}
-              </li>
-            </ul>
-          </div>
-          <div *ngIf="modalAsignatura?.assists && modalAsignatura.assists.length === 0">
-            <p>No se ha registrado asistencia.</p>
-          </div>
-        </ion-card>
-      </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
-
 
 <ion-footer>
   <ion-toolbar>

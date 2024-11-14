@@ -6,12 +6,24 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { QRCodeModule } from 'angularx-qrcode';
-import { ModalController } from '@ionic/angular';
+import { ModalContentPageModule } from './modal-content/modal-content.module';  // Correcto
+import { AsistenciaPageModule } from './asistencia/asistencia.module';  // Correcto
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,QRCodeModule,IonicModule.forRoot(),],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,},ModalController],
-  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    HttpClientModule,
+    QRCodeModule,
+    ModalContentPageModule,  // Asegúrate de que se importe el módulo
+    AsistenciaPageModule,    // Asegúrate de que se importe el módulo
+  ],
+  providers: [{ 
+    provide: RouteReuseStrategy, 
+    useClass: IonicRouteStrategy 
+  }],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
