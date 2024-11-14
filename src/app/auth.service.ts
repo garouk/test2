@@ -11,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 export class AuthService {
   private apiUrl = 'http://localhost:3000/users';  // URL del servidor json-server
 
-  constructor(private http: HttpClient, private router: Router,  private alertCtrl: AlertController) {}
+  constructor(private http: HttpClient, private router: Router, private alertCtrl: AlertController) {}
 
   login(name: string, password: string): Observable<any> {
     return this.http.get<any[]>(this.apiUrl).pipe(  // Obtener todos los usuarios desde db.json
@@ -31,7 +31,7 @@ export class AuthService {
       })
     );
   }
-  
+
   logout() {
     localStorage.removeItem('userType');  // Limpiar cualquier dato del usuario en localStorage
     this.router.navigate(['/sesion']);
@@ -46,7 +46,48 @@ export class AuthService {
     return localStorage.getItem('userName') || '';
   }
 
+  // Método para registrar asistencia
+  registrarAsistencia(userId: string, asigId: string, asistencia: any): Observable<any> {
+    // Primero obtenemos el usuario desde el backend
+    return this.http.get<any>(`${this.apiUrl}/${userId}`).pipe(
+      switchMap((user) => {
+        // Encontramos la asignatura correspondiente
+        const asignatura = user.asignatura.find((asig: { asigId: string; }) => asig.asigId === asigId);
+        
+        // Si encontramos la asignatura, agregamos la nueva asistencia
+        if (asignatura) {
+          asignatura.assists.push(asistencia);
+        }
 
+        // Actualizamos la asignatura en el servidor (json-server) con la nueva asistencia
+        return this.http.put<any>(`${this.apiUrl}/${userId}`, user).pipe(
+          map((updatedUser) => {
+            // Si la actualización en el servidor es exitosa, también actualizamos el localStorage
+
+            // Recuperar el usuario actual desde localStorage
+            let currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            if (currentUser && currentUser.id === userId) {
+              // Actualizamos los datos de la asignatura en el localStorage
+              const updatedAsignaturas = currentUser.asignatura.map((asig: any) => {
+                if (asig.asigId === asigId) {
+                  asig.assists = [...asig.assists, asistencia]; // Añadimos la nueva asistencia
+                }
+                return asig;
+              });
+
+              currentUser.asignatura = updatedAsignaturas;
+              localStorage.setItem('currentUser', JSON.stringify(currentUser));  // Guardamos los cambios en localStorage
+            }
+
+            return updatedUser;  // Retornamos la respuesta del servidor para que pueda ser manejada si es necesario
+          }),
+          catchError((error) => {
+            throw new Error('Error al actualizar la asistencia en la base de datos: ' + error.message);
+          })
+        );
+      })
+    );
+  }
   async changePassword(oldPassword: string, newPassword: string, confirmPassword: string) {
     try {
       // Obtener el usuario completo de localStorage
@@ -90,21 +131,4 @@ export class AuthService {
     }
     
   }
-  registrarAsistencia(userId: string, asigId: string, asistencia: any): Observable<any> {
-    // Primero obtenemos el usuario
-    return this.http.get<any>(`${this.apiUrl}/${userId}`).pipe(
-      switchMap((user) => {
-        // Encontramos la asignatura correspondiente
-        const asignatura = user.asignatura.find((asig: { asigId: string; }) => asig.asigId === asigId);
-        
-        // Agregamos la nueva asistencia al array 'assists' de esa asignatura
-        if (asignatura) {
-          asignatura.assists.push(asistencia);
-        }
-
-        // Actualizamos el usuario con la nueva lista de asignaturas
-        return this.http.put<any>(`${this.apiUrl}/${userId}`, user);
-      })
-    );
-}
 }

@@ -9,7 +9,13 @@
         {
           "asigId": "005",
           "asigName": "Arquitectura",
-          "assists": []
+          "assists": [
+            {
+              "fecha": "14-11-2024, 07:45 p. m.",
+              "estado": "Presente",
+              "codigoQR": "qr_005"
+            }
+          ]
         },
         {
           "asigId": "004",

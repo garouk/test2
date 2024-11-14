@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';  
 
 interface Asignatura {
   asigId: string;
@@ -33,7 +34,7 @@ export class QrgenPage implements OnInit {
     cssClass: 'custom-action-sheet'
   };
 
-  constructor(private router: Router, private alertController: AlertController) { }
+  constructor(private router: Router, private alertController: AlertController, private authService: AuthService) { }
 
   ngOnInit() {
     // Cargar el usuario desde el localStorage
@@ -95,8 +96,17 @@ export class QrgenPage implements OnInit {
       // Agregar la nueva asistencia a la asignatura correspondiente
       asignatura.assists.push(nuevaAsistencia);
 
-      // Actualizar el localStorage con las asignaturas y asistencias
+      // Actualizar la base de datos (db.json) a través del servicio AuthService
       const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+      if (!currentUser || !currentUser.id) {
+        await this.mostrarError('No se encontró el usuario');
+        return;
+      }
+
+      // Llamar al servicio para registrar la asistencia en el backend
+      await this.authService.registrarAsistencia(currentUser.id, this.asignaturaSeleccionada, nuevaAsistencia).toPromise();
+
+      // Actualizar el localStorage con las asignaturas y asistencias
       const updatedAsignaturas = currentUser.asignatura.map((asig: any) => {
         if (asig.asigId === asignatura.asigId) {
           return { ...asig, assists: asignatura.assists };
@@ -119,7 +129,7 @@ export class QrgenPage implements OnInit {
           handler: () => {
             this.codigoQR = '';  // Limpiar el código QR
             this.asignaturaSeleccionada = '';  // Limpiar la asignatura seleccionada
-            this.router.navigate(['./iniciotwo']);
+            this.router.navigate(['./inicio']);
           }
         }]
       });
@@ -127,10 +137,11 @@ export class QrgenPage implements OnInit {
       await alert.present();
     } catch (error) {
       console.error('Error al registrar asistencia:', error);
+      await this.mostrarError('Hubo un error al registrar la asistencia');
     }
   }
 
   volver() {
-    this.router.navigate(['/iniciotwo']);
+    this.router.navigate(['/inicio']);
   }
 }
