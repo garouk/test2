@@ -27,8 +27,8 @@ export class QrgenPage implements OnInit {
   ];
 
   asignaturaSeleccionada: string = '';
-  asignaturaNombre: string = '';  // Nombre de la asignatura seleccionada
-  codigoQR: string = '';         // Código QR generado
+  asignaturaNombre: string = '';  
+  codigoQR: string = '';         
 
   constructor(
     private router: Router,
@@ -37,29 +37,28 @@ export class QrgenPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Cargar el usuario desde el localStorage
+   
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     if (currentUser && currentUser.asignatura) {
-      this.asignaturas = currentUser.asignatura; // Cargar las asignaturas del usuario
+      this.asignaturas = currentUser.asignatura;
     }
   }
 
-  // Función para generar el código QR
+ 
   generarCodigoQr() {
     if (!this.asignaturaSeleccionada) {
       this.mostrarError('Por favor selecciona una asignatura');
       return;
     }
   
-    // Buscar la asignatura seleccionada para obtener su nombre
+   
     const asignatura = this.asignaturas.find(asig => asig.asigId === this.asignaturaSeleccionada);
     if (asignatura) {
-      this.asignaturaNombre = asignatura.asigName;  // Guardamos el nombre de la asignatura seleccionada
-      this.codigoQR = `qr_${asignatura.asigId}_${asignatura.asigName}`;  // Generamos el QR con ID y nombre de la asignatura
+      this.asignaturaNombre = asignatura.asigName;  
+      this.codigoQR = `qr_${asignatura.asigId}_${asignatura.asigName}`;  
     }
   }
 
-  // Función para mostrar alertas de error
   async mostrarError(mensaje: string) {
     const alert = await this.alertController.create({
       header: 'Error',
@@ -69,7 +68,7 @@ export class QrgenPage implements OnInit {
     await alert.present();
   }
 
-  // Función para registrar la asistencia
+
   async registrarAsistencia() {
     try {
       if (!this.codigoQR) {
@@ -77,14 +76,14 @@ export class QrgenPage implements OnInit {
         return;
       }
 
-      // Buscar la asignatura seleccionada para agregar la asistencia
+      
       const asignatura = this.asignaturas.find(asig => asig.asigId === this.asignaturaSeleccionada);
       if (!asignatura) {
         await this.mostrarError('Asignatura no encontrada');
         return;
       }
 
-      // Crear un objeto con la nueva asistencia
+      
       const nuevaAsistencia = {
         fecha: new Date().toLocaleString('es-Cl', {
           year: 'numeric',
@@ -97,20 +96,20 @@ export class QrgenPage implements OnInit {
         codigoQR: this.codigoQR
       };
 
-      // Agregar la nueva asistencia a la asignatura correspondiente
+      
       asignatura.assists.push(nuevaAsistencia);
 
-      // Actualizar las asignaturas y asistencias en el localStorage
+     
       const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
       if (!currentUser || !currentUser.id) {
         await this.mostrarError('No se encontró el usuario');
         return;
       }
 
-      // Llamar al servicio para registrar la asistencia en el backend
+      
       await this.authService.registrarAsistencia(currentUser.id, this.asignaturaSeleccionada, nuevaAsistencia).toPromise();
 
-      // Actualizar el localStorage con las asignaturas y asistencias
+      
       const updatedAsignaturas = currentUser.asignatura.map((asig: any) => {
         if (asig.asigId === asignatura.asigId) {
           return { ...asig, assists: asignatura.assists };
@@ -118,20 +117,20 @@ export class QrgenPage implements OnInit {
         return asig;
       });
 
-      // Guardar las asignaturas actualizadas en localStorage
+      
       currentUser.asignatura = updatedAsignaturas;
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
-      // Mostrar un mensaje de éxito
+      
       const alert = await this.alertController.create({
         header: 'Éxito',
         message: 'Asistencia registrada correctamente',
         buttons: [{
           text: 'OK',
           handler: () => {
-            this.codigoQR = '';  // Limpiar el código QR
-            this.asignaturaSeleccionada = '';  // Limpiar la asignatura seleccionada
-            this.router.navigate(['./inicio']);  // Redirigir al inicio
+            this.codigoQR = '';  
+            this.asignaturaSeleccionada = ''; 
+            this.router.navigate(['./iniciotwo']); 
           }
         }]
       });
@@ -144,6 +143,6 @@ export class QrgenPage implements OnInit {
   }
 
   volver() {
-    this.router.navigate(['/inicio']);  // Volver a la página de inicio
+    this.router.navigate(['/iniciotwo']);  
   }
 }

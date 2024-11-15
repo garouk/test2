@@ -2,41 +2,39 @@
   <ion-toolbar>
     <ion-icon (click)="volver()" name="arrow-back" class="back"></ion-icon>
     <ion-title class="head">
-      Generar Código QR
+      Vivo Duoc
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <!-- Sección de selección de asignatura -->
-  <ion-card>
+
+  <ion-card class="qrtar">
     <ion-card-content>
       <ion-item>
-        <ion-label>Selecciona una asignatura</ion-label>
-        <ion-select [(ngModel)]="asignaturaSeleccionada" interface="action-sheet" placeholder="Elige una asignatura">
+        <ion-label class="labelll">Selecciona asignatura</ion-label>
+        <ion-select [(ngModel)]="asignaturaSeleccionada" interface="action-sheet">
           <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura.asigId">
             {{ asignatura.asigName }}
           </ion-select-option>
         </ion-select>
       </ion-item>
-
-      <!-- Botón para generar el código QR -->
+      <br>
       <ion-button expand="block" (click)="generarCodigoQr()" [disabled]="!asignaturaSeleccionada">
         Generar Código QR
       </ion-button>
     </ion-card-content>
   </ion-card>
 
-  <!-- Mostrar el código QR generado -->
+
   <ion-card *ngIf="codigoQR">
     <ion-card-content>
       <h3>Generado Código QR para Asignatura:</h3>
-      <p><strong>{{ asignaturaNombre }}</strong></p> <!-- Mostrar el nombre de la asignatura seleccionada -->
+      <p><strong>{{ asignaturaNombre }}</strong></p>
 
-      <!-- Generación del QR -->
       <qrcode [qrdata]="codigoQR"></qrcode>
 
-      <!-- Mostrar el código QR como texto -->
+
       <p class="codigo-texto">Código: {{ codigoQR }}</p>
     </ion-card-content>
   </ion-card>

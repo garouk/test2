@@ -93,3 +93,27 @@ ion-button{
 
 }
 
+.labelll{
+  text-align: center;
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #A7ADC6;
+    font-size: small;
+}
+
+
+.qrtar{
+  --background: #2C1320;
+    --background-activated: rgba(0, 0, 0, 0.1);
+    font-family: "Lexend Deca", serif;
+    font-optical-sizing: auto;
+}
+
+.back{
+  font-size: x-large;
+  margin-top: 4px;
+  color: #2C1320;
+  float: left;
+  display: flex;
+}

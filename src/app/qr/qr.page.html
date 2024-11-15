@@ -2,54 +2,47 @@
   <ion-toolbar>
     <ion-icon (click)="volver()" name="arrow-back" class="back"></ion-icon>
     <ion-title class="head">
-      Escanear Código QR
+      Vivo Duoc
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <ion-segment [(ngModel)]="segment">
-    <ion-segment-button value="qr">
-      <ion-label>Escanear QR</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-  
-  <div class="segment" *ngIf="segment === 'qr'">
-    <div class="segment-content">
-      
-      <!-- Mostrar el selector de asignaturas -->
-      <ion-card>
+      <ion-card class="qrtar">
         <ion-card-content>
           <ion-item *ngIf="asignaturas && asignaturas.length > 0">
-            <ion-label>Selecciona una asignatura</ion-label>
-            <ion-select [(ngModel)]="asignaturaSeleccionada" interface="action-sheet" placeholder="Elige una asignatura">
+            <ion-label class="labelll">Selecciona asignatura</ion-label>
+            <ion-select [(ngModel)]="asignaturaSeleccionada" interface="action-sheet" placeholder="">
               <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura.asigId">
                 {{ asignatura.asigName }}
               </ion-select-option>
             </ion-select>
           </ion-item>
-
-          <!-- Botón para generar el código QR -->
+          <br>
           <ion-button expand="block" (click)="seleccionarAsignaturaParaEscaneo()" [disabled]="!asignaturaSeleccionada">
-            Generar Scanner Qr
+            Generar Scanner QR
           </ion-button>
         </ion-card-content>
       </ion-card>
 
-      <!-- Sección para el escáner -->
       <div id="qrScanner" style="width: 100%; height: 300px;"></div>
       <ion-text *ngIf="scannedCode">
-        <h3>Código QR escaneado: {{ scannedCode }}</h3>
+        <h3 >Código QR escaneado: {{ scannedCode }}</h3>
       </ion-text>
       <ion-text *ngIf="asistenciaRegistrada">
         <h3>Asistencia registrada con éxito.</h3>
       </ion-text>
-    </div>
-  </div>
-
-  <!-- Botón de registrar asistencia -->
+      <br>
+      <br>
   <ion-button expand="block" (click)="registrarAsistencia()" [disabled]="!botonDesbloqueado">
     Registrar Asistencia
   </ion-button>
 </ion-content>
-``
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="bottom">
+      Scanner QR
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

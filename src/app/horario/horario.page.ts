@@ -16,6 +16,6 @@ export class HorarioPage implements OnInit {
   
   volver(){
     this.modalController.dismiss();
-    this.router.navigate(['/inicio']);
+    this.router.navigate(['/iniciotwo']);
   }
 }

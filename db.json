@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "frankito",
-      "password": "Colocolo12",
+      "password": "Colocolo13",
       "tipo": "estudiante",
       "asignatura": [
         {
@@ -12,6 +12,16 @@
           "assists": [
             {
               "fecha": "14/11/2024, 9:47:44 p.m.",
+              "estado": "Presente",
+              "codigoQR": "qr_005"
+            },
+            {
+              "fecha": "14/11/2024, 11:58:58 p.m.",
+              "estado": "Presente",
+              "codigoQR": "qr_005"
+            },
+            {
+              "fecha": "15/11/2024, 12:51:16 a.m.",
               "estado": "Presente",
               "codigoQR": "qr_005"
             }
