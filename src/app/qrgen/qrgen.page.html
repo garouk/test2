@@ -8,31 +8,36 @@
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
+  <!-- Sección de selección de asignatura -->
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>Selecciona asignatura</ion-label>
-        <ion-select [(ngModel)]="asignaturaSeleccionada" interface="action-sheet">
+        <ion-label>Selecciona una asignatura</ion-label>
+        <ion-select [(ngModel)]="asignaturaSeleccionada" interface="action-sheet" placeholder="Elige una asignatura">
           <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura.asigId">
             {{ asignatura.asigName }}
           </ion-select-option>
         </ion-select>
       </ion-item>
 
+      <!-- Botón para generar el código QR -->
       <ion-button expand="block" (click)="generarCodigoQr()" [disabled]="!asignaturaSeleccionada">
         Generar Código QR
       </ion-button>
     </ion-card-content>
   </ion-card>
 
+  <!-- Mostrar el código QR generado -->
   <ion-card *ngIf="codigoQR">
     <ion-card-content>
-      <qrcode [qrdata]="codigoQR"></qrcode>
-      <p class="codigo-texto">Código: {{ codigoQR }}</p>
+      <h3>Generado Código QR para Asignatura:</h3>
+      <p><strong>{{ asignaturaNombre }}</strong></p> <!-- Mostrar el nombre de la asignatura seleccionada -->
 
-      <ion-button expand="block" (click)="registrarAsistencia()">
-        Registrar Asistencia
-      </ion-button>
+      <!-- Generación del QR -->
+      <qrcode [qrdata]="codigoQR"></qrcode>
+
+      <!-- Mostrar el código QR como texto -->
+      <p class="codigo-texto">Código: {{ codigoQR }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>
@@ -40,7 +45,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-title class="bottom">
-      QR Generator
+      Generador de QR
     </ion-title>
   </ion-toolbar>
 </ion-footer>

@@ -11,7 +11,7 @@
           "asigName": "Arquitectura",
           "assists": [
             {
-              "fecha": "14-11-2024, 07:45 p. m.",
+              "fecha": "14/11/2024, 9:47:44 p.m.",
               "estado": "Presente",
               "codigoQR": "qr_005"
             }
@@ -20,7 +20,13 @@
         {
           "asigId": "004",
           "asigName": "CalidadSof",
-          "assists": []
+          "assists": [
+            {
+              "fecha": "14/11/2024, 9:47:54 p.m.",
+              "estado": "Presente",
+              "codigoQR": "qr_004"
+            }
+          ]
         },
         {
           "asigId": "003",

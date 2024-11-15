@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { AuthService } from '../auth.service';  
+import { AuthService } from '../auth.service';
 
 interface Asignatura {
   asigId: string;
   asigName: string;
-  assists: any[];  // Lista de asistencias (de tipo "any", ya que se actualiza con datos más específicos)
+  assists: any[];
 }
 
 @Component({
@@ -27,20 +27,20 @@ export class QrgenPage implements OnInit {
   ];
 
   asignaturaSeleccionada: string = '';
-  codigoQR: string = '';
-  usuario: any = {};
-  customActionSheetOption = {
-    header: 'Selecciona asignatura',
-    cssClass: 'custom-action-sheet'
-  };
+  asignaturaNombre: string = '';  // Nombre de la asignatura seleccionada
+  codigoQR: string = '';         // Código QR generado
 
-  constructor(private router: Router, private alertController: AlertController, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private alertController: AlertController,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     // Cargar el usuario desde el localStorage
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     if (currentUser && currentUser.asignatura) {
-      this.asignaturas = currentUser.asignatura; // Cargar las asignaturas completas (con asistencias)
+      this.asignaturas = currentUser.asignatura; // Cargar las asignaturas del usuario
     }
   }
 
@@ -50,18 +50,22 @@ export class QrgenPage implements OnInit {
       this.mostrarError('Por favor selecciona una asignatura');
       return;
     }
-
-    // Aquí puedes generar el QR según la asignatura seleccionada
-    this.codigoQR = `qr_${this.asignaturaSeleccionada}`;
+  
+    // Buscar la asignatura seleccionada para obtener su nombre
+    const asignatura = this.asignaturas.find(asig => asig.asigId === this.asignaturaSeleccionada);
+    if (asignatura) {
+      this.asignaturaNombre = asignatura.asigName;  // Guardamos el nombre de la asignatura seleccionada
+      this.codigoQR = `qr_${asignatura.asigId}_${asignatura.asigName}`;  // Generamos el QR con ID y nombre de la asignatura
+    }
   }
 
+  // Función para mostrar alertas de error
   async mostrarError(mensaje: string) {
     const alert = await this.alertController.create({
       header: 'Error',
       message: mensaje,
       buttons: ['OK']
     });
-
     await alert.present();
   }
 
@@ -73,14 +77,14 @@ export class QrgenPage implements OnInit {
         return;
       }
 
-      // Buscar la asignatura seleccionada
+      // Buscar la asignatura seleccionada para agregar la asistencia
       const asignatura = this.asignaturas.find(asig => asig.asigId === this.asignaturaSeleccionada);
       if (!asignatura) {
         await this.mostrarError('Asignatura no encontrada');
         return;
       }
 
-      // Registrar la asistencia
+      // Crear un objeto con la nueva asistencia
       const nuevaAsistencia = {
         fecha: new Date().toLocaleString('es-Cl', {
           year: 'numeric',
@@ -96,7 +100,7 @@ export class QrgenPage implements OnInit {
       // Agregar la nueva asistencia a la asignatura correspondiente
       asignatura.assists.push(nuevaAsistencia);
 
-      // Actualizar la base de datos (db.json) a través del servicio AuthService
+      // Actualizar las asignaturas y asistencias en el localStorage
       const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
       if (!currentUser || !currentUser.id) {
         await this.mostrarError('No se encontró el usuario');
@@ -118,9 +122,7 @@ export class QrgenPage implements OnInit {
       currentUser.asignatura = updatedAsignaturas;
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
-      console.log('Asistencia registrada', nuevaAsistencia);
-      console.log('Todas las asistencias', asignatura.assists);
-
+      // Mostrar un mensaje de éxito
       const alert = await this.alertController.create({
         header: 'Éxito',
         message: 'Asistencia registrada correctamente',
@@ -129,7 +131,7 @@ export class QrgenPage implements OnInit {
           handler: () => {
             this.codigoQR = '';  // Limpiar el código QR
             this.asignaturaSeleccionada = '';  // Limpiar la asignatura seleccionada
-            this.router.navigate(['./inicio']);
+            this.router.navigate(['./inicio']);  // Redirigir al inicio
           }
         }]
       });
@@ -142,6 +144,6 @@ export class QrgenPage implements OnInit {
   }
 
   volver() {
-    this.router.navigate(['/inicio']);
+    this.router.navigate(['/inicio']);  // Volver a la página de inicio
   }
 }
