@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class AuthService {
 
-  private apiUrl = 'http://192.168.1.88:3000';  // URL base del servidor json-server
+  private apiUrl = 'http://--tu ip--:3000';  // URL base del servidor json-server
 
   constructor(
     private http: HttpClient,
