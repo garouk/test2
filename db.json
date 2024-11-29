@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "frankito",
-      "password": "Colocolo13",
+      "password": "Javieragay",
       "tipo": "estudiante",
       "asignatura": [
         {
@@ -22,6 +22,11 @@
             },
             {
               "fecha": "15/11/2024, 12:51:16 a.m.",
+              "estado": "Presente",
+              "codigoQR": "qr_005"
+            },
+            {
+              "fecha": "28/11/2024, 8:51:36 p.m.",
               "estado": "Presente",
               "codigoQR": "qr_005"
             }

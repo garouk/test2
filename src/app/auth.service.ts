@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000';  // URL base del servidor json-server
+  private apiUrl = 'http://192.168.1.88:3000';  // URL base del servidor json-server
 
   constructor(
     private http: HttpClient,
@@ -24,19 +24,31 @@ export class AuthService {
       map(usuarios => {
         const usuario = usuarios.find(u => u.name === name && u.password === password);
         if (usuario) {
-          // Si el usuario es encontrado, guardamos su información en localStorage
-          localStorage.setItem('currentUser', JSON.stringify(usuario));  // Guardar el usuario completo
+          localStorage.setItem('currentUser', JSON.stringify(usuario));
+          localStorage.setItem('userName', usuario.name);
+          localStorage.setItem('userType', usuario.tipo);
           return usuario;
         } else {
-          // Si no se encuentra el usuario, lanzamos un error
+          // Mostrar una alerta de error
+          this.alertCtrl.create({
+            header: 'Error',
+            message: 'Usuario o contraseña incorrectos',
+            buttons: ['OK']
+          }).then(alert => alert.present());
           throw new Error('Usuario o contraseña incorrectos');
         }
       }),
       catchError((error) => {
-        throw new Error(error.message);  // Propagamos el error correctamente
+        console.error('Error en login:', error);
+        this.alertCtrl.create({
+          header: 'Error',
+          message: 'Hubo un problema con la conexión o la solicitud.',
+          buttons: ['OK']
+        }).then(alert => alert.present());
+        throw new Error(error.message);
       })
     );
-  }
+  }  
 
   // Método de logout para cerrar sesión
   logout() {
